@@ -7,6 +7,7 @@ public class Main {
         lista.add("C");
         lista.add("D");
         lista.add("E");
+        
         System.out.println("Lista original: ");
         System.out.println(lista);
         lista.swap("A", "E");
@@ -24,5 +25,8 @@ public class Main {
         System.out.println(lista.search(2).data);
         System.out.println(lista.search(3).data);
         System.out.println(lista.search(4).data);
+        System.out.println("Agregando antes del último: ");
+        lista.addBeforeLast("F");
+        System.out.println(lista);
     }
 }

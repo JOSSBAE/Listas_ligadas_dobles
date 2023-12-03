@@ -1,25 +1,50 @@
-
+/*
+ * Buscar un nodo por su posición, enumerando el prmero con la posición 0, el siguiente como el 1, 
+ * etc. y devolver una referencia a él. 
+ * Insertar un nuevo nodo antes del último.
+ * Intercambiar un nodo por otro buscado.
+ */
 public class Lista {
     private Node top;
+    private Node back;
 
     Lista() { 
         top = null;
+        back = null;
     }
 
-    // Agregar un nodo antes del ultimo
+    //Agrega un nodo
     public void add(String data) {
         Node temp = new Node();
         temp.data = data;
         if (top == null) {
             top = temp;
+            back = temp;
         } else {
             temp.next = top;
+            top.back = temp;
             top = temp;
         }
     }
-
-    // Intercambiar un nodo por otro buscado por su data
-    public void swap(String data1, String data2) {
+    //Agrega un nodo antes del ultimo
+    public void addBeforeLast(String data) {
+        Node temp = new Node();
+        temp.data = data;
+        if(top == null){
+            top = temp;
+            back = temp;
+        }else{
+            
+            back.back.next = temp;
+            temp.back = back.back;
+            temp.next = back;
+            back.back = temp;
+            back = temp;
+            
+        }
+    }
+    //Intercambia un nodo por otro buscado
+    public void swap(String data1,String data2){
         Node temp = top;
         Node temp1 = null;
         Node temp2 = null;
@@ -39,7 +64,7 @@ public class Lista {
         }
     }
 
-    // Buscar un nodo por su posición, enumerando el prmero con la posición 0, el
+        // Buscar un nodo por su posición, enumerando el prmero con la posición 0, el
     // siguiente como el 1, etc. y devolver una referencia a él.
     public Node search(int pos) {
         Node temp = top;
@@ -56,13 +81,13 @@ public class Lista {
 
     @Override
     public String toString() {
-        String s = "";
+        String result = "";
         Node temp = top;
         while (temp != null) {
-            s += temp.data + " ";
+            result += temp.data + " ";
             temp = temp.next;
         }
-        return s;
+        return result;
     }
 
 }
